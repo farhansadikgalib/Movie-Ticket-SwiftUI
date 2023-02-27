@@ -17,20 +17,22 @@ struct ContentView: View {
     
     var body: some View {
   
-        VStack{
-            TabView(selection: $currtentTab){
-                HomeView().tag(Tab.home)
+        NavigationView {
+            VStack{
+                TabView(selection: $currtentTab){
+                    HomeView().tag(Tab.home)
+                    
+                    Text("Location").tag(Tab.location)
+                    TicketView().tag(Tab.ticket)
+                    
+                    Text("Category").tag(Tab.category)
+                    Text("Profile").tag(Tab.profile)
+                }
                 
-                Text("Location").tag(Tab.location)
-                TicketView().tag(Tab.ticket)
+                CustomTabBar(currentTab: $currtentTab)
                 
-                Text("Category").tag(Tab.category)
-                Text("Profile").tag(Tab.profile)
-            }
-            
-            CustomTabBar(currentTab: $currtentTab)
-            
-        }.ignoresSafeArea(.keyboard)
+            }.ignoresSafeArea(.keyboard)
+        }
         
     }
 }
